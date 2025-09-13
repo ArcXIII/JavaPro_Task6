@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
     <configuration default="false" name="Run app" type="SpringBootApplicationConfigurationType"
                    factoryName="Spring Boot">
-        <module name="JavaPro_Task4"/>
+        <module name="JavaPro_Task6"/>
         <option name="SPRING_BOOT_MAIN_CLASS" value="org.arcsoft.Main"/>
         <extension name="coverage">
             <pattern>

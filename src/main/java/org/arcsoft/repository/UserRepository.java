@@ -1,6 +1,6 @@
 package org.arcsoft.repository;
 
-import org.arcsoft.domain.User;
+import org.arcsoft.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User, Long> {

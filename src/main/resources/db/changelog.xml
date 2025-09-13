@@ -19,5 +19,49 @@
             <column name="username" value="Nick Fury"/>
         </insert>
     </changeSet>
+    <changeSet id="1758305644035-1"
+               author="XIII">
+        <createTable tableName="products">
+            <column autoIncrement="true"
+                    name="id"
+                    type="BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="pk_products"/>
+            </column>
+            <column name="account_number"
+                    type="VARCHAR(255)"/>
+            <column name="balance"
+                    type="NUMERIC"/>
+            <column name="type"
+                    type="VARCHAR(255)"/>
+            <column name="user_id"
+                    type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1758305644035-2"
+               author="XIII">
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="products"
+                                 constraintName="FK_PRODUCTS_ON_USER"
+                                 referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1758309185208-1" author="XIII">
+        <insert tableName="products">
+            <column name="id" value="1"/>
+            <column name="type" value="CARD"/>
+            <column name="account_number" value="0123456789"/>
+            <column name="balance" value="100.00"/>
+            <column name="user_id" value="1"/>
+        </insert>
+        <insert tableName="products">
+            <column name="id" value="2"/>
+            <column name="type" value="ACCOUNT"/>
+            <column name="account_number" value="9876543210"/>
+            <column name="balance" value="200.00"/>
+            <column name="user_id" value="2"/>
+        </insert>
+    </changeSet>
 
 </databaseChangeLog>

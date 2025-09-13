@@ -1,0 +1,58 @@
+GET http://localhost:8080/users
+
+<> 2025-09-19T223250.200.json
+<> 2025-09-19T223106.200.json
+<> 2025-09-19T222210.500.json
+
+###
+
+GET http://localhost:8080/products
+
+<> 2025-09-19T223248.200.json
+<> 2025-09-19T223140.200.json
+
+###
+
+GET http://localhost:8080/users/3
+
+<> 2025-09-19T224342.200.json
+<> 2025-09-19T224244.200.json
+<> 2025-09-19T223949.200.json
+<> 2025-09-19T223937.200.json
+<> 2025-09-19T223751.200.json
+<> 2025-09-19T223734.200.json
+<> 2025-09-19T223244.200.json
+<> 2025-09-19T223239.200.json
+
+###
+
+GET http://localhost:8080/users/3/products
+
+<> 2025-09-19T223933.200.json
+<> 2025-09-19T223746.200.json
+<> 2025-09-19T223233.200.json
+<> 2025-09-19T223230.200.json
+
+###
+
+POST http://localhost:8080/products
+Content-Type: application/json
+
+{
+  "accountNumber": "654654654",
+  "balance": 100500,
+  "type": "CARD",
+  "userId": 3
+}
+
+<> 2025-09-19T223927.200.json
+<> 2025-09-19T223724.200.json
+<> 2025-09-19T223609.500.json
+<> 2025-09-19T223551.500.json
+<> 2025-09-19T223524.415.json
+
+###
+
+POST http://localhost:8080/users?userName=Jane Doe
+
+<> 2025-09-19T223919.200.json
