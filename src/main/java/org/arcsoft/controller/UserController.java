@@ -1,12 +1,16 @@
 package org.arcsoft.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.arcsoft.domain.dto.CreateUserRequest;
 import org.arcsoft.domain.dto.UserDto;
+import org.arcsoft.domain.dto.UserShortDto;
 import org.arcsoft.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.apache.commons.lang3.BooleanUtils.isTrue;
 
 @RestController
 @RequestMapping("/users")
@@ -15,17 +19,26 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public List<UserDto> getUsers() {
-        return userService.getAllUsers();
+    public List<? extends UserShortDto> getUsers(
+            @RequestParam(name = "withProducts", defaultValue = "false", required = false) Boolean withProducts) {
+
+        if (isTrue(withProducts)) {
+            return userService.getAllUsers();
+        } else
+            return userService.getAllUsersShort();
     }
 
     @GetMapping("/{userId}")
-    public UserDto getById(@PathVariable Long userId) {
-        return userService.getUserById(userId);
+    public ResponseEntity<? extends UserShortDto> getById(@PathVariable Long userId,
+                                                          @RequestParam(name = "withProducts", defaultValue = "false", required = false) Boolean withProducts) {
+        if (isTrue(withProducts))
+            return ResponseEntity.ok(userService.getUserById(userId));
+        else
+            return ResponseEntity.ok(userService.getUserByIdShort(userId));
     }
 
     @PostMapping
-    public UserDto create(@RequestParam("userName") String userName) {
+    public UserShortDto create(@RequestBody CreateUserRequest userName) {
         return userService.createUser(userName);
     }
 

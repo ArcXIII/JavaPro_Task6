@@ -1,6 +1,19 @@
 package org.arcsoft.domain.dto;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import java.util.List;
 
-public record UserDto(Long id, String username, List<ProductDto> products) {
+@Data
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class UserDto extends UserShortDto {
+    private List<ProductDto> products;
+
+    public UserDto(Long id, String username, List<ProductDto> products) {
+        super(id, username);
+        this.products = products;
+    }
 }

@@ -63,5 +63,10 @@
             <column name="user_id" value="2"/>
         </insert>
     </changeSet>
+    <changeSet id="1758525824438-1" author="XIII">
+        <createIndex tableName="products" indexName="idx_user_id">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
 
 </databaseChangeLog>

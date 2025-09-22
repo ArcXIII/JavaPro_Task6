@@ -26,8 +26,9 @@ public class ProductService {
         return mapper.toDto(productRepository.findByUserId(userId));
     }
 
-    public ProductDto addProduct(CreateProductRequest dto) {
+    public ProductDto addProduct(Long userId, CreateProductRequest dto) {
         var product = mapper.toEntity(dto);
+        product.setUserId(userId);
         return mapper.toDto(productRepository.save(product));
     }
 

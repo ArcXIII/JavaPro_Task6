@@ -23,9 +23,9 @@ public class ProductController {
         return productService.getById(id);
     }
 
-    @PostMapping("/products")
-    public ProductDto addProduct(@RequestBody CreateProductRequest product) {
-        return productService.addProduct(product);
+    @PostMapping("/users/{userId}/products")
+    public ProductDto addProduct(@PathVariable("userId") Long userId, @RequestBody CreateProductRequest product) {
+        return productService.addProduct(userId, product);
     }
 
     @GetMapping("/users/{userId}/products")
