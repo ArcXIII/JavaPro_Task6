@@ -1,0 +1,35 @@
+package org.arcsoft.controller;
+
+import lombok.RequiredArgsConstructor;
+import org.arcsoft.dto.users.CreateProductRequest;
+import org.arcsoft.dto.users.ProductDto;
+import org.arcsoft.service.ProductService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequiredArgsConstructor
+public class ProductController {
+    private final ProductService productService;
+
+    @GetMapping("/products")
+    public List<ProductDto> getAllProducts() {
+        return productService.getAll();
+    }
+
+    @GetMapping("/products/{id}")
+    public ProductDto getProductById(@PathVariable Long id) {
+        return productService.getById(id);
+    }
+
+    @PostMapping("/users/{userId}/products")
+    public ProductDto addProduct(@PathVariable("userId") Long userId, @RequestBody CreateProductRequest product) {
+        return productService.addProduct(userId, product);
+    }
+
+    @GetMapping("/users/{userId}/products")
+    public List<ProductDto> getUserProducts(@PathVariable Long userId) {
+        return productService.getByUserId(userId);
+    }
+}

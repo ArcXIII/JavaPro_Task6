@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="Run user-api" type="SpringBootApplicationConfigurationType"
+                   factoryName="Spring Boot">
+        <module name="user-api"/>
+        <option name="SPRING_BOOT_MAIN_CLASS" value="org.arcsoft.Main"/>
+        <extension name="coverage">
+            <pattern>
+                <option name="PATTERN" value="org.arcsoft.*"/>
+                <option name="ENABLED" value="true"/>
+            </pattern>
+        </extension>
+        <method v="2">
+            <option name="Make" enabled="true"/>
+        </method>
+    </configuration>
+</component>
