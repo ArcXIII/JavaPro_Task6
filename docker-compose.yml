@@ -1,0 +1,24 @@
+services:
+  api-contracts:
+    image: test-project-deps:dep
+    build:
+      dockerfile: Dockerfile.dep
+  user-api:
+    image: user-api:1.0
+    build:
+      dockerfile: Dockerfile.userservice
+    ports:
+      - 8080:8080
+    depends_on:
+      - api-contracts
+  payment-api:
+    image: payment-api:1.0
+    build:
+      dockerfile: Dockerfile.paymentservice
+    environment:
+      USER-SERVICE_BASE-URL: http://user-api:8080
+    ports:
+      - 8081:8081
+    depends_on:
+      - api-contracts
+      - user-api

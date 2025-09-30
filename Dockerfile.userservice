@@ -1,0 +1,20 @@
+FROM test-project-deps:dep AS build
+
+WORKDIR /app
+
+COPY pom.xml .
+COPY api-contracts api-contracts
+COPY PaymentApi/pom.xml PaymentApi/pom.xml
+COPY UserApi UserApi
+
+RUN mvn package -pl org.arcsoft:user-api,org.arcsoft:api-contracts
+
+FROM eclipse-temurin:25_36-jre-jammy
+WORKDIR /app
+COPY --from=build /app/UserApi/target/user-api-1.0-SNAPSHOT.jar app.jar
+COPY test.mv.db .
+COPY test.trace.db .
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

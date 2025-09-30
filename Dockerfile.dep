@@ -1,0 +1,10 @@
+FROM maven:3.9.11-eclipse-temurin-25
+
+WORKDIR /app
+
+COPY pom.xml .
+COPY api-contracts/pom.xml api-contracts/pom.xml
+COPY PaymentApi/pom.xml PaymentApi/pom.xml
+COPY UserApi/pom.xml UserApi/pom.xml
+
+RUN mvn org.apache.maven.plugins:maven-dependency-plugin:3.8.1:go-offline

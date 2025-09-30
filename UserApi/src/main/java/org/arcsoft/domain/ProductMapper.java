@@ -14,6 +14,7 @@ import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
 public interface ProductMapper {
 
     @Mapping(target = "id", ignore = true)
+    @Mapping(target = "userId", ignore = true)
     Product toEntity(CreateProductRequest dto);
 
     ProductDto toDto(Product entity);

@@ -14,5 +14,12 @@ spring:
       hibernate:
         enable_lazy_load_no_trans: false
     show-sql: true
+management:
+  endpoints:
+    access:
+      default: unrestricted
+    web:
+      exposure:
+        include: "*"
 server:
   port: 8080
